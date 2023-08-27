@@ -89,6 +89,11 @@
         }, duration, function () {
             typeof callback === 'function' && callback();
         })
+
+        $('.enlarge-close').css({
+            'width': 50,
+            'height': 50,
+        });
     }
 
     function imgEnkarge(el) {
@@ -125,8 +130,8 @@
             enlargeClose.attr({
                 'class': 'enlarge-close'
             }).css({
-                'width': '10vw',
-                'height': '10vw',
+                'width': '0',
+                'height': '0',
                 'marginTop': '2%',
                 'color': '#ffffff',
                 'pointer-events': 'auto'

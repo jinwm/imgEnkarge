@@ -13,6 +13,7 @@
         height: 100vh;
         overflow: hidden;
         display: flex;
+        margin: 0;
     }
 
     .imgBox {
@@ -32,13 +33,13 @@
 
 <body>
     <div class="imgBox">
-        <img src="../../../../../航拍素材/20230225/DJI_0529.JPG" alt="image">
+        <img src="./bg.jpg" alt="image">
     </div>
 </body>
 <script src="./js/jquery-2.1.4.min.js"></script>
 <script src="./js/index.js"></script>
 <script>
-    $.imgEnkarge('.imgBox', 'img');
+    $('.imgBox').imgEnkarge();
 </script>
 
 </html>
