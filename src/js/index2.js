@@ -44,38 +44,39 @@
         }, 200, () => {
             attrs = null;
             enlargeWrap.hide().find('.enlargeImgBox').remove();
-            $('body').css('overflow', 'initial');
+            // $('body').css('overflow', 'initial');
             setTimeout(function () {
                 isHandleClose = false
             }, 50);
         });
     })
 
-    function imgEnkarge(el, child) {
-        const elem = $(el);
-        elem.css('cursor', 'pointer').off('click');
-        elem.on('click', child, function () {
-            const self = $(this);
-            let src = $(this).attr('src');
-            let img = new Image();
-            img.src = src;
-            attrs = {
-                width: self.width(),
-                height: self.height(),
-                left: self.offset().left,
-                top: self.offset().top - $(window).scrollTop(),
-            }
-            let attrs2 = JSON.parse(JSON.stringify(attrs));
-            attrs2.opacity = 1;
-            enlargeWrap.append('<div class="enlargeImgBox"></div>');
-            enlargeWrap.find('.enlargeImgBox').css(attrs2).html(img);
-            $('body').css('overflow', 'hidden');
-            enlargeWrap.show();
-            enlargeWrap.find('.enlarge-layer').fadeIn(500);
-            bigImgToMiddle(500, function () {
-                isHandleClose = true
-            });
-        })
+    function imgEnkarge(el) {
+        const self = $(this);
+        self.css('cursor', 'pointer').off('click')
+            .on('click', el || 'img', function () {
+                const self = $(this);
+                // let src = $(this).attr('src');
+                // let img = new Image();
+                // img.src = src;
+                img = $(this).clone();
+                attrs = {
+                    width: self.width(),
+                    height: self.height(),
+                    left: self.offset().left,
+                    top: self.offset().top - $(window).scrollTop(),
+                }
+                let attrs2 = JSON.parse(JSON.stringify(attrs));
+                attrs2.opacity = 1;
+                enlargeWrap.append('<div class="enlargeImgBox"></div>');
+                enlargeWrap.find('.enlargeImgBox').css(attrs2).html(img);
+                // $('body').css('overflow', 'hidden');
+                enlargeWrap.show();
+                enlargeWrap.find('.enlarge-layer').fadeIn(500);
+                bigImgToMiddle(500, function () {
+                    isHandleClose = true
+                });
+            })
     }
-    $.__proto__.imgEnkarge = imgEnkarge;
+    $.prototype.imgEnkarge = imgEnkarge;
 })($);
