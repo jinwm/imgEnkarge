@@ -166,7 +166,3 @@
     }
     n.prototype.imgEnkarge = imgEnkarge;
 })($);
-
-// 调用
-// $('.imgBox').imgEnkarge('.img');
-// $('.imgBox').imgEnkarge();
