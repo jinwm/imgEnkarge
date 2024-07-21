@@ -2,44 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>imgEnkarge-demo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>viewLargeImage-demo</title>
 </head>
 <style>
-    body {
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        margin: 0;
-    }
+  html,body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    margin: 0;
+  }
 
-    .imgBox {
-        width: 500px;
-        height: 500px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  .imgBox {
+    max-width: 100%;
+    max-height: 100%;
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    /* top: 100px;
+    left: 500px; */
+  }
 
-    .imgBox img {
-        max-width: 100%;
-        max-height: 100%;
-    }
+  .imgBox img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 </style>
 
 <body>
-    <div class="imgBox">
-        <img src="./bg.jpg" alt="image">
-    </div>
+  <div class="imgBox">
+      <img src="https://image.bitautoimg.com/appimage-1080-w1/mapi/news/2024/03/03/6609a790f3a9414dbf8b82c2a6401a6c.png" view-large-image data-title="123123" >
+  </div>
+
+  <div class="imgBox">
+    <img src="https://img1.baidu.com/it/u=417666439,117715371&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" view-large-image data-title="123123" >
+</div>
+
+<div class="imgBox">
+  <img src="https://image.bitautoimg.com/appimage-800-w0/news/2024/03/19/2ddac34b-8c26-4a01-9e00-bc2f911df182.jpg" view-large-image data-title="123123" >
+</div>
+
+
+  <link rel="stylesheet" href="./css/index.css">
 </body>
-<script src="./js/jquery-2.1.4.min.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/viewLargeImage.js"></script>
 <script>
-    $('.imgBox').imgEnkarge();
+
+ let obj = window.viewLargeImage({
+    width:document.documentElement.clientWidth * 0.8, // 宽度
+    height:document.documentElement.clientHeight * 0.5, // 高度
+    effect: 'moveIn', // 过度方式，默认fadeIn，可选moveIn
+    objectFit: 'contain', // 填充方式(contain/cover/fill)，默认contain
+    closeOnClick: false, // 是否开启点击遮罩关闭，默认false
+    hideFooter: false, // 是否隐藏底栏，默认false
+    resize: true // 默认false
+  });
+  // img需要加上view-large-image
+  // view-image 大图地址
+  // obj.update // 更新配置
+  // obj.close // 关闭弹层
+  // obj.destroy // 销毁
 </script>
 
 </html>

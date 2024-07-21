@@ -1,0 +1,160 @@
+img[view-large-image]{
+  cursor: pointer;
+  user-select: none;
+}
+
+#view-large-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+  padding: 0;
+  display: none;
+}
+
+#view-large-image.show {
+  display: block;
+}
+
+#view-large-image-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#view-large-main {
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#view-large-image-wrap {
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+#view-large-loading-layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+#view-large-loading-layer.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#view-large-loading-layer::before {
+  content: '';
+  display: block;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, #ccc 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #ccc);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn)
+  }
+}
+
+#view-large-image-transform {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0%, 0%);
+  overflow: hidden;
+  border-radius: 5px;
+  background: #fff;
+}
+
+#view-large-image-transform::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 3px solid #fff;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+#view-large-image-wrap img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+#view-large-image-container {
+  flex-shrink: 0;
+  width: 100%;
+  height: 32px;
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#view-large-image-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#view-large-image-close {
+  display: block;
+  width: 32px;
+  height: 32px;
+  transition: opacity, transform .4s;
+  transform: rotate(0);
+}
+
+#view-large-image-close:hover {
+  transform: rotate(180deg);
+  opacity: .7;
+}
+
+#view-large-image-close svg {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
